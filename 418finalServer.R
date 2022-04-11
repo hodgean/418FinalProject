@@ -20,8 +20,8 @@ server<-function(input, output, session) {
   })
   
   output$plot21<-renderPlot({
-    #library("RODBC")
-    #library("RODBCext")
+    library("RODBC")
+    library("RODBCext")
     con<-odbcConnect("orc2",uid="system",pwd="system")
     xx1<-sqlQuery(con,"select *from earthquake")
     y<-xx1[!is.na(xx1)]
@@ -45,8 +45,8 @@ server<-function(input, output, session) {
   })
   
   output$plot31<-renderPlot({
-    #library("RODBC")
-    #library("RODBCext")
+    library("RODBC")
+    library("RODBCext")
     
     con<-odbcConnect("orc2",uid="system",pwd="system")
     timeseries<-ts(y)
@@ -67,8 +67,8 @@ server<-function(input, output, session) {
   })
   
   output$b61<-renderPrint({
-    #library("RODBC")
-    #library("RODBCext")
+    library("RODBC")
+    library("RODBCext")
     
     con<-odbcConnect("orc2",uid="system",pwd="system")
     x1 <- as.numeric(unlist(strsplit(input$a,",")))
@@ -85,7 +85,6 @@ server<-function(input, output, session) {
     auto<-auto.arima(y1)
     b<-as.numeric(input$b2)
     forecast(auto,2)
-    ##plot(forecast(auto,2))
     
   })
   
@@ -112,7 +111,6 @@ server<-function(input, output, session) {
     xx<-ts(y[!is.na(y)],freq=31)
     n=length(xx)
     
-    #tsplot(xx,ylab="magnitude",xlab="minutes")
     Per=Mod(fft(xx-mean(xx)))^2/n
     Freq=(1:n -1)/n
     plot(Freq[1:50],Per[1:50],type='o',ylab="periodogram",xlab="frequency",main="Periodogram",col='red',lty=2,pch=2)
@@ -120,8 +118,8 @@ server<-function(input, output, session) {
   })
   
   output$plotp <- renderPlot({
-    #library("RODBC")
-    #library("RODBCext")
+    library("RODBC")
+    library("RODBCext")
     
     con<-odbcConnect("orc2",uid="system",pwd="system")
     xx1<-sqlQuery(con,"select *from earthquake")
@@ -176,8 +174,8 @@ server<-function(input, output, session) {
   })
   
   output$E2 <- renderPrint({
-    #library("RODBC")
-    #library("RODBCext")
+    library("RODBC")
+    library("RODBCext")
     
     con<-odbcConnect("orc2",uid="system",pwd="system")
     x1 <- as.numeric(unlist(strsplit(input$a,",")))
