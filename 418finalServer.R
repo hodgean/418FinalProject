@@ -1,12 +1,3 @@
-# install.packages("markdown")
-# install.packages("shiny")
-# install.packages("shinyjs")
-# install.packages("shinythemes")
-# install.packages("shinydashboard")
-# install.packages("tseries")
-# install.packages("forecast")
-# install.packages("rsconnect")
-# install.packages('RODBCext', repos='https://mran.microsoft.com/snapshot/2019-02-01/')
 server<-function(input, output, session) {
   
   library("tseries")
